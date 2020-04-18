@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  you can't stop the signal.
+-->
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="ci.png" >
+    <title>  New Time</title>
+    <meta name="description" content="New Time ">
+    <meta name="author" content="Yuan Jiang">
+    <meta property="og:title" content="New Time" />
+    <meta property="og:description" content="New Time" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="ci.png" />
+    <meta property="og:site_name" content="New Time" />
+
+ <body>
+  </head>
+  <style>
+  body {
+  font-family: Trebuchet MS,sans-serif;
+  margin: 0;
+
+
+  }
+  p{
+    color: white;
+    font-size: 25px;
+
+    position:absolute;
+    top:80%;
+    left:46%;
+  }
+
+  .clock {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    margin-left: -200px;
+    margin-top: -200px;
+    top: 40%;
+    left: 50%;
+  }
+
+  .separator {
+    width: 1px;
+    height: 200px;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    margin-left: -.5px;
+    border: none;
+    transform-origin: center bottom;
+  }
+
+  .cover {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -150px;
+    margin-left: -150px;
+  }
+
+  .label {
+    width; 20px;
+    color: white;
+    position: absolute;
+    font-size: 12pt;
+    font-family: "Helvetica", "sans-serif";
+  }
+
+  .lt {
+    left: 50%;
+    top: 0;
+    margin-left: -10px;
+    margin-top: 10px;
+  }
+
+  .lr{
+    right: 0;
+    top: 50%;
+    margin-top: -6pt;
+    margin-right: 10px;
+  }
+
+  .lb {
+    bottom: 0;
+    margin-bottom: 10px;
+    left: 50%;
+    margin-left: -10px;
+  }
+
+  .ll{
+    left: 0;
+    top: 50%;
+    margin-left: 10px;
+    margin-top: -6pt;
+  }
+  .hand{
+    --rotation: 30;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    bottom:50%;
+    margin-left: -1px;
+    transform-origin: bottom ;
+
+  }
+  .sec{
+    --rotation: 30;
+    width: 2px;
+    height:45%;
+
+  }
+  .min{
+    --rotation: 40;
+    width: 2px;
+    height:37%;
+
+  }
+  .hour{
+    --rotation: 90;
+    width:2px;
+    height:29%;
+
+  }
+  .s1 {transform: rotate(15deg);}
+  .s2 {transform: rotate(30deg);}
+  .s3 {transform: rotate(45deg);}
+  .s4 {transform: rotate(60deg);}
+  .s5 {transform: rotate(75deg);}
+  .s6 {transform: rotate(90deg);}
+  .s7 {transform: rotate(105deg);}
+  .s8 {transform: rotate(120deg);}
+  .s9 {transform: rotate(135deg);}
+  .s10 {transform: rotate(150deg);}
+  .s11 {transform: rotate(165deg);}
+  .s12 {transform: rotate(180deg);}
+  .s13 {transform: rotate(195deg);}
+  .s14 {transform: rotate(210deg);}
+  .s15 {transform: rotate(225deg);}
+  .s16 {transform: rotate(240deg);}
+  .s17 {transform: rotate(255deg);}
+  .s18 {transform: rotate(270deg);}
+  .s19 {transform: rotate(285deg);}
+  .s20 {transform: rotate(300deg);}
+  .s21 {transform: rotate(315deg);}
+  .s22 {transform: rotate(330deg);}
+  .s23 {transform: rotate(345deg);}
+  </style>
+  <div class="clock">
+      <div class="separator s0"></div>
+      <div class="separator s1"></div>
+      <div class="separator s2"></div>
+      <div class="separator s3"></div>
+      <div class="separator s4"></div>
+      <div class="separator s5"></div>
+      <div class="separator s6"></div>
+      <div class="separator s7"></div>
+      <div class="separator s8"></div>
+      <div class="separator s9"></div>
+      <div class="separator s10"></div>
+      <div class="separator s11"></div>
+      <div class="separator s12"></div>
+      <div class="separator s13"></div>
+      <div class="separator s14"></div>
+      <div class="separator s15"></div>
+      <div class="separator s16"></div>
+      <div class="separator s17"></div>
+      <div class="separator s18"></div>
+      <div class="separator s19"></div>
+      <div class="separator s20"></div>
+      <div class="separator s21"></div>
+      <div class="separator s22"></div>
+      <div class="separator s23"></div>
+      <div class="cover" id="cover">
+        <div class="label lt">12</div>
+        <div class="label lr">03</div>
+        <div class="label lb">06</div>
+        <div class="label ll">09</div>
+      </div>
+      <div class="hand hour" id="handhour"></div>
+      <div class="hand min" id="handmin"></div>
+      <div class="hand sec" id="handsec"></div>
+
+  </div>
+  <script>
+	var clockWorkMultiplier = 1;
+	var previousAngle = 0;
+
+	var color = window.localStorage.getItem('BackgroundColor');
+	document.body.style.backgroundColor = color;
+	var coverComponent = document.getElementById("cover");
+	var rect = coverComponent.getBoundingClientRect();
+	var centerX = rect.x + rect.width / 2;
+	var centerY = rect.y + rect.height / 2;
+	coverComponent.style.backgroundColor = color;
+	var handhour = document.getElementById("handhour");
+	var handmin = document.getElementById("handmin");
+	var handsec = document.getElementById("handsec");
+	var d = new Date();
+	var sec = d.getSeconds() + d.getMilliseconds() / 1000;
+	var min = d.getMinutes() + d.getSeconds() / 60 + d.getMilliseconds() / 60000;
+	var hour = d.getHours() + d.getMinutes() / 60 + d.getSeconds() / 3600 + d.getMilliseconds() / 360000;
+	var timeInterval = 10;
+	handsec.style.transform = 'rotate('+ 6 * sec+'deg)';
+	handmin.style.transform = 'rotate('+ 6 * min+'deg)';
+	handhour.style.transform = 'rotate('+  30 * hour+'deg)';
+
+	window.setInterval(function(){
+		sec = sec + clockWorkMultiplier * (timeInterval / 1000);
+		min = min + clockWorkMultiplier * (timeInterval / 60000);
+		min = min + clockWorkMultiplier * (timeInterval / 360000);
+		handsec.style.transform = 'rotate('+ 6 * sec+'deg)';
+		handmin.style.transform = 'rotate('+ 6 * min+'deg)';
+		handhour.style.transform = 'rotate('+  30 * hour+'deg)';
+		if(sec > 60){
+			sec = sec - 60;
+		}
+		if(min > 60){
+			min = min - 60;
+		}
+		if(hour > 12){
+			hour = hour - 12;
+		}
+	}, timeInterval);
+
+	window.addEventListener('mousemove', e => {
+
+		var angle = Math.atan((centerY - e.clientY) / (e.clientX - centerX)) * 180 / Math.PI;
+		var deltaAngle = angle - previousAngle;
+		previousAngle = angle;
+		if(Math.abs(deltaAngle) > 10){
+			return;
+		}
+		if(deltaAngle > 0){
+			clockWorkMultiplier = 1 / (1 + deltaAngle);
+			return;
+		}
+		clockWorkMultiplier = 1 - (2 * deltaAngle);
+	});
+
+  </script>
+    <p> New Time </p>
+
+  </body>
+</html>

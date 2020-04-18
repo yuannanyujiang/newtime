@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  you can't stop the signal.
+-->
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="ci.png" >
+    <title>  New Time</title>
+    <meta name="description" content="New Time ">
+    <meta name="author" content="Yuan Jiang">
+    <meta property="og:title" content="New Time" />
+    <meta property="og:description" content="New Time" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="ci.png" />
+    <meta property="og:site_name" content="New Time" />
+
+  </head>
+
+  <body>
+    <style>
+    body{
+      font-family: Trebuchet MS,sans-serif;
+
+
+    }
+    #now{
+      color:white;
+      font-size: 30px;
+      position:absolute;
+      left:calc(50vw - 320px);
+      top: calc(20vh - 50px);
+    }
+    #anti{
+      color:white;
+      font-size: 20px;
+      position:absolute;
+      left:calc(20vw - 110px);
+      top: 75vh;
+      z-index: 2;
+    }
+    #pica{
+    position:absolute;
+    left:calc(20vw - 10px);
+    top:45vh;
+    }
+    #picb{
+    position:absolute;
+    right:calc(20vw - 10px);
+    top:45vh;
+    }
+    #clock{
+      color:white;
+      font-size: 20px;
+      position:absolute;
+      right:calc(20vw - 110px);
+      top: 75vh;
+      z-index: 2;
+    }
+    #mine{
+        color:white;
+        font-size: 25px;
+        position:absolute;
+        left:calc(50vw - 140px);
+        top: 90vh;
+        border-style: solid;
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-top: 5px;
+        padding-bottom:5px;
+        z-index: 1;
+    }
+    </style>
+    <script>
+
+	document.body.style.backgroundColor = window.localStorage.getItem('BackgroundColor');
+
+     window.setTimeout(function(){
+       window.location.href = "clock.htm";
+     }, 10000);
+    </script>
+    <div id="now">
+      Now, use your cursor, set a New Time for ‘yours’
+    </div>
+    <div id="anti">
+      Move on anti clockwise direction to slow down
+    </div>
+    <div id="clock">
+      Move on clockwise direction to speed up
+    </div>
+    <div id="mine">
+      Mine
+    </div>
+    <div id="pica">
+      <img src="antic.png">
+    </div>
+
+    <img src="c.png" id="picb">
+  </body>
+</html>

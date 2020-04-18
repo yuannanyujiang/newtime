@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  you can't stop the signal.
+-->
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="ci.png" >
+    <title>  New Time</title>
+    <meta name="description" content="New Time ">
+    <meta name="author" content="Yuan Jiang">
+    <meta property="og:title" content="New Time" />
+    <meta property="og:description" content="New Time" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="ci.png" />
+    <meta property="og:site_name" content="New Time" />
+
+  </head>
+
+  <body>
+    <style>
+    body{
+      font-family: Trebuchet MS,sans-serif;
+
+    }
+    #space{
+      color:white;
+      font-size: 30px;
+      position:absolute;
+      left:calc(50vw - 300px);
+      top: calc(50vh - 50px);
+    }
+    #click{
+      color:white;
+      font-size: 20px;
+      position:absolute;
+      left:calc(50vw - 125px);
+      bottom: 20vh;
+      z-index: 2;
+    }
+    #mine{
+      color:white;
+      font-size: 25px;
+      position:absolute;
+      left:calc(50vw - 140px);
+      top: 90vh;
+      border-style: solid;
+      padding-left: 100px;
+      padding-right: 100px;
+      padding-top: 5px;
+      padding-bottom:5px;
+      text-decoration: none;
+      z-index: 1;
+    }
+    </style>
+    <script>
+
+    document.body.style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+    function press(event){
+		if(event.keyCode == 32){
+			document.body.style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+			window.localStorage.setItem('BackgroundColor', document.body.style.backgroundColor);
+		}
+    }
+    window.addEventListener('keypress', press)
+
+
+    </script>
+    <div id="space">
+      Press the spacebar, until you find ‘yours’
+    </div>
+    <div id="click">
+      click here after you find it
+    </div>
+    <a href="instruction.htm" id="mine">
+      Mine
+    </a>
+  </body>
+</html>
