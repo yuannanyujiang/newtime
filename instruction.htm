@@ -58,27 +58,26 @@
       z-index: 2;
     }
     #mine{
-        color:white;
-        font-size: 25px;
-        position:absolute;
-        left:calc(50vw - 140px);
-        top: 80vh;
-        border-style: solid;
-        border-width: thin;
-        padding-left: 100px;
-        padding-right: 100px;
-        padding-top: 5px;
-        padding-bottom:5px;
-        z-index: 1;
+      color:white;
+      font-size: 25px;
+      position:absolute;
+      left:calc(50vw - 150px);
+      top: 80vh;
+      border-style: solid;
+      border-width: thin;
+      padding-left: 100px;
+      padding-right: 100px;
+      padding-top: 5px;
+      padding-bottom:5px;
+      text-decoration: none;
+      z-index: 1;
     }
     </style>
     <script>
 
 	document.body.style.backgroundColor = window.localStorage.getItem('BackgroundColor');
 
-     window.setTimeout(function(){
-       window.location.href = "clock.htm";
-     }, 5000);
+
     </script>
     <div id="now">
       Wait a second, use your cursor, you can set your new time
@@ -89,9 +88,9 @@
     <div id="clock">
       Move on clockwise direction to speed up
     </div>
-    <div id="mine">
-      Mine
-    </div>
+    <a href="clock.htm" id="mine">
+      To New Time
+    </a>
 
     <img src="antic.png" id="pica">
 
